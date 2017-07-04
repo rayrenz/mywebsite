@@ -1,0 +1,12 @@
+body {
+    background-color: #d0e9c6;
+}
+.navbar {
+    border-radius: 0;
+}
+.navbar-brand {
+    font-family: 'Satisfy', serif;
+}
+.page-header {
+    font-family: 'Satisfy', serif;
+}

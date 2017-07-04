@@ -1,0 +1,34 @@
+{% extends 'music/layout.html' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+  <form action="" method="post" class="form-horizontal">
+  {% csrf_token %}
+    <div class="row">
+      <div class="panel panel-default col-md-4">
+        <div class="panel-body">
+          <div class="row">
+            {% if form.errors %}
+              {% for field in form %}
+                {% for error in field.errors %}
+                  <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ error }}
+                  </div>
+                {% endfor %}
+              {% endfor %}
+            {% endif %}
+            {% for field in form %}
+              <div class="form-group">
+                <label class="control-label col-md-5">{{ field.label_tag }}</label>
+                <div class="col-md-7">{{ field }}</div>
+              </div>
+            {% endfor %}
+            <div class="col-md-offset-5 col-md-7">
+              <button type="submit" class="btn btn-success">Register</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}

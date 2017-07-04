@@ -1,0 +1,23 @@
+{% extends 'music/index.html' %}
+{% block body %}
+  <div class="container">
+    <header class="page-header h1">{{ album.album_title }}</header>
+    <h3 class="h4">Artist: {{ album.artist }}</h3>
+    <img class="img-circle table-row" src="{{ album.album_logo.url }}" class="thumbnail" style="height: 300px;">
+    {% if album.song_set.all %}
+      <form action="#" method="post">
+        {% csrf_token %}
+        {% for song in album.song_set.all %}
+          <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
+          <label for="song{{ forloop.counter }}">
+            {{ song.song_title }}
+            {% if song.is_favorite %}
+              <img src="http://i.imgur.com/b9b13Rd.png">
+            {% endif %}
+          </label><br>
+        {% endfor %}
+        <input type="submit" value="Favorite" class="submit-button">
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}
