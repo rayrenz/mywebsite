@@ -5,7 +5,7 @@
     <h3 class="h4">Artist: {{ album.artist }}</h3>
     <img class="img-circle table-row" src="{{ album.album_logo.url }}" class="thumbnail" style="height: 300px;">
     {% if album.song_set.all %}
-      <form action="#" method="post">
+      <form action="{% url 'favorite' album.id %}" method="post">
         {% csrf_token %}
         {% for song in album.song_set.all %}
           <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">

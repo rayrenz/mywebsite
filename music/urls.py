@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^album/(?P<pk>[0-9]+)/delete/$', views.AlbumDelete.as_view(), name='delete-album'),
     # music/song/
     url(r'^song/add/$', views.SongCreate.as_view(), name='add-song'),
+    url(r'^album/(?P<album_id>[0-9]+)/favorite/$', views.favorite, name='favorite')
 ]

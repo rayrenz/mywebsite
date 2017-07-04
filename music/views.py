@@ -1,4 +1,5 @@
 from django.views import generic
+from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, View
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, redirect
@@ -69,3 +70,11 @@ class UserFormView(View):
                     login(request, user)
                     return redirect('index')
         return render(request, self.template_name, {'form': form})
+
+
+def favorite(request, album_id):
+    album = get_object_or_404(Album, pk=album_id)
+    song = album.song_set.get(pk=request.POST['song'])
+    song.is_favorite = True
+    song.save()
+    return render(request, 'music/album.html', { 'album': album })
