@@ -7,18 +7,20 @@
     <div class="row">
 
         {% for album in object_list %}
-          <div class="col-sm-6 col-md-3">
+          <div class="col-sm-6 col-md-3 album">
+
             <div class="thumbnail">
               <img src="{{ album.album_logo.url }}" style="height: 300px;">
               <caption>
-                <header class="h4"><a href="{% url 'detail' album.id %}">{{ album.album_title }}</a></header>
-                <h5>{{ album.artist }}</h5>
+                <header class="h4 album"><a href="{% url 'detail' album.id %}">{{ album.album_title }}</a></header>
+                <h5 class="album">{{ album.artist }}</h5>
               </caption>
               <form action="{% url 'delete-album' album.pk %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn-delete btn btn-xs glyphicon glyphicon-trash"></button>
               </form>
             </div>
+
           </div>
         {% endfor %}
 
