@@ -27,7 +27,7 @@ class AlbumCreate(CreateView):
 
 class SongCreate(CreateView):
     model = Song
-    fields = ['album', 'file_type', 'song_title', 'is_favorite']
+    fields = ['album', 'file_type', 'song_title', 'is_favorite', 'song_file']
 
 
 class SongUpdate(UpdateView):

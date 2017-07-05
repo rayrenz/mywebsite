@@ -14,7 +14,11 @@
             {% if song.is_favorite %}
               <img src="http://i.imgur.com/b9b13Rd.png">
             {% endif %}
-          </label><br>
+          </label>
+          {% if song.song_file %}
+            <audio src="{{ song.song_file.url }}" controls type="audio/mpeg"></audio>
+          {% endif %}
+          <br>
         {% endfor %}
         <input type="submit" value="Favorite" class="submit-button">
       </form>
